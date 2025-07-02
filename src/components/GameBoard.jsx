@@ -12,8 +12,10 @@ export default function GameBoard(){
     function handleSelectSquare(rawIndex,colIndex){
         console.log(rawIndex,colIndex);
         setGameBoard((prevGameBoard) => {
-            prevGameBoard[rawIndex][colIndex] = "X";
-            return prevGameBoard;
+            // get copy of existing array...
+            const updateGameBoard = [...prevGameBoard.map((innerArray) => [...innerArray])];
+            updateGameBoard[rawIndex][colIndex] = "X";
+            return updateGameBoard;
         })
     }
 
