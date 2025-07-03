@@ -1,12 +1,16 @@
 import { useState } from "react";
 
-export default function Player({ initialName, symbol, isActive }){
+export default function Player({ initialName, symbol, isActive, onHandlePlayerName }){
     const [playerName,setPlayerName] = useState(initialName);
     const [isEditing,setIsEditing] = useState(false);
 
     function handleEditeClick(){
         // update state value based on previous value... -> functional form...
         setIsEditing((editing) => !editing);
+
+        if(isEditing){
+            onHandlePlayerName(symbol,playerName);
+        }
     }
 
     function handleChange(event){
